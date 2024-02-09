@@ -50,6 +50,7 @@ function createManager(){
   ).then((answers) => {
     const manager = new Manager(answers.managerName, answers.id, answers.email, answers.officeNumber)
     teamMembers.push(manager)
+    createTeam()
   })
 }
     // Ask for a name, id, email and office number for the manager
@@ -90,6 +91,7 @@ function createEngineer(){
   ).then((answers) => {
     const engineer = new Engineer (answers.engineerName, answers.id, answers.email, answers.github)
     teamMembers.push(engineer)
+    createTeam()
   })
 }
     // Asks for a name, id, email, and github
@@ -128,6 +130,7 @@ function createIntern(){
   ).then((answers) => {
     const intern = new Intern (answers.internName, answers.id, answers.email, answers.school)
     teamMembers.push(intern)
+    createTeam()
   })
 }
     // Asks for a name, id, email, and school
@@ -139,6 +142,30 @@ function createIntern(){
 
 // Function to ask the user what team member they would like to create next, either a Engineer or Intern. Also ask if they don't want to add any more team members. SHOULD BE CALLED AT THE END OF EACH MEMBER FUNCTION SO THEY CAN CREATE ANOTHER MEMBER AFTER ALREADY CREATING ONE.
 
+function createTeam() {
+  inquirer.prompt([
+    {
+      type: "list",
+      name: "employeeChoice",
+      message: "Which employee would you like to add", 
+      choices: ["Engineer" , "Intern" , "Done"]
+
+    }
+  ]).then((answer) => {
+    if(answer.employeeChoice === "Intern"){
+      createIntern()
+    }
+    else if(answer.employeeChoice === "Engineer"){
+      createEngineer()
+    }
+    else{
+      fs.writeFileSync("./output/team.html" , render(teamMembers), 'utf-8')
+    }
+  })
+}
+
+
+
     // Then create a conditional to check which member the user picked and run the appropriate function based off of that input ex:`if(userChoice === 'Engineer'){createEngineer()}`
     // Have a else condition so that if they choose to not make any more members, the file gets written.(Can create a function for this and then call the function)
 
@@ -146,8 +173,7 @@ function createIntern(){
     // Call the function to initialize the app.
     
     
-    
-    
+createManager()
     
     
     

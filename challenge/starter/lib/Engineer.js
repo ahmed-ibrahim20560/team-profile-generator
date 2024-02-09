@@ -14,6 +14,13 @@ class Engineer extends Employee {
   getRole() {
     return "Engineer"
   }
+
+  getName(){
+    return this.name
+  }
+  getId(){
+    return this.id
+  }
 }
 
 module.exports = Engineer

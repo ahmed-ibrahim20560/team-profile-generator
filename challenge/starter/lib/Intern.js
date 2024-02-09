@@ -11,6 +11,13 @@ class intern extends Employee {
     return this.school
   }
 
+  getName(){
+    return this.name
+  }
+  getId(){
+    return this.id
+  }
+
   getRole() {
     return "Intern"
   }
