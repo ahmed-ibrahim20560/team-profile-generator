@@ -9,15 +9,49 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
+const { type } = require("os");
 
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
 // Create a empty array to store the team members after they are created
 
+const teamMembers = []
+
 // Create a empty array to store the member IDs after they are created
 
 // Function to create the manager. Should be the initial function called when creating the team.
+
+function createManager(){
+  console.log('Please build you team')
+  inquirer.prompt(
+    [
+      {
+        type: "input",
+        name: "managerName",
+        message: "What is your name?"
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "What is your id?"
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "What is your email?"
+      },
+      {
+        type: "input",
+        name: "officeNumber",
+        message: "What is your office number?"
+      },
+    ]
+  ).then((answers) => {
+    const manager = new Manager(answers.managerName, answers.id, answers.email, answers.officeNumber)
+    teamMembers.push(manager)
+  })
+}
     // Ask for a name, id, email and office number for the manager
 
     // Then store the answers into a new Manager object
@@ -27,6 +61,37 @@ const render = require("./src/page-template.js");
 
 
 // Function to create an engineer.
+
+
+function createEngineer(){
+  inquirer.prompt(
+    [
+      {
+        type: "input",
+        name: "engineerName",
+        message: "What is their name?"
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "What is their id?"
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "What is their email?"
+      },
+      {
+        type: "input",
+        name: "github",
+        message: "What is their github?"
+      },
+    ]
+  ).then((answers) => {
+    const engineer = new Engineer (answers.engineerName, answers.id, answers.email, answers.github)
+    teamMembers.push(engineer)
+  })
+}
     // Asks for a name, id, email, and github
 
     //then store the answers into a new Engineer object
@@ -35,6 +100,36 @@ const render = require("./src/page-template.js");
 
 
 // Function to create an intern
+
+function createIntern(){
+  inquirer.prompt(
+    [
+      {
+        type: "input",
+        name: "internName",
+        message: "What is their name?"
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "What is their id?"
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "What is their email?"
+      },
+      {
+        type: "input",
+        name: "school",
+        message: "What is their school?"
+      },
+    ]
+  ).then((answers) => {
+    const intern = new Intern (answers.internName, answers.id, answers.email, answers.school)
+    teamMembers.push(intern)
+  })
+}
     // Asks for a name, id, email, and school
 
     // Then store the answers into the team members arry
