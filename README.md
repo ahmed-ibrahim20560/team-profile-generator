@@ -7,3 +7,8 @@ I created an initial employee class using the base parameters that would make up
 
 
 ![Screenshot of the deployed page](<challenge/assets/Screen Shot 2024-02-13 at 21.08.51 pm.png>)
+
+https://github.com/ahmed-ibrahim20560/team-profile-generator
+
+challenge/starter/output/team.html
+
